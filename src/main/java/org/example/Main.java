@@ -4,14 +4,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * The Main class serves as the entry point for the program.
+ * It filters a list of chthonic creatures based on certain criteria,
+ * groups them by type, and performs an analysis of attack powers.
+ * The filtered and grouped creatures are printed, followed by an analysis of attack power.
+ */
 public class Main {
+
+    /**
+     * The main method is the entry point of the program.
+     * It initializes a list of creatures, filters them, groups them by type,
+     * and performs an attack power analysis.
+     *
+     * @param args Command-line arguments (not used in this case)
+     */
     public static void main(String[] args) {
-        int N = 100;
+        int n = 100;
         int minYears = 100;
         int maxYears = 1500;
 
         List<ChthonicCreature> filteredCreatures = Gatherer.infiniteCreatureStream()
-                .skip(N)
+                .skip(n)
                 .filter(c -> !c.getType().equals("Witch"))
                 .filter(c -> {
                     long years = c.getYearsSinceFirstMention();
