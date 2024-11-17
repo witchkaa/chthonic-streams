@@ -13,21 +13,21 @@ public class Gatherer {
     private static final List<String> TYPES = Arrays.asList("Cyclops", "Werewolf", "Gorgon", "Vampire", "Witch", "Mermaid");
     private static final Random RANDOM = new Random();
 
-    private static ChtonicCreature generateCreature() {
+    private static ChthonicCreature generateCreature() {
         String name = NAMES.get(RANDOM.nextInt(NAMES.size()));
         String type = TYPES.get(RANDOM.nextInt(TYPES.size()));
         LocalDate firstMentionDate = LocalDate.now().minusYears(RANDOM.nextInt(2000));
         int attackPower = RANDOM.nextInt(100);
-        return new ChtonicCreature(name, type, firstMentionDate, attackPower);
+        return new ChthonicCreature(name, type, firstMentionDate, attackPower);
     }
 
-    public static Stream<ChtonicCreature> infiniteCreatureStream() {
+    public static Stream<ChthonicCreature> infiniteCreatureStream() {
         return Stream.generate(Gatherer::generateCreature);
     }
 
-    public static Map<String, Long> analyzeCreatures(List<ChtonicCreature> creatures) {
+    public static Map<String, Long> analyzeCreatures(List<ChthonicCreature> creatures) {
         List<Integer> attackPowers = creatures.stream()
-                .map(ChtonicCreature::getAttackPower)
+                .map(ChthonicCreature::getAttackPower)
                 .sorted()
                 .collect(Collectors.toList());
 
