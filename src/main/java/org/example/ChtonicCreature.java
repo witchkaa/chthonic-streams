@@ -2,13 +2,13 @@ package org.example;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class ChthonicCreature {
+public class ChtonicCreature {
     String name;
     String type;
     LocalDate firstMentionDate;
     int attackPower;
 
-    public ChthonicCreature(String name, String type, LocalDate firstMentionDate, int attackPower) {
+    public ChtonicCreature(String name, String type, LocalDate firstMentionDate, int attackPower) {
         this.name = name;
         this.type = type;
         this.firstMentionDate = firstMentionDate;

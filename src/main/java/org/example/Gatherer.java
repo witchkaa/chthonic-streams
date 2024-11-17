@@ -13,21 +13,21 @@ public class Gatherer {
     private static final List<String> TYPES = Arrays.asList("Cyclops", "Werewolf", "Gorgon", "Vampire", "Witch", "Mermaid");
     private static final Random RANDOM = new Random();
 
-    private static ChthonicCreature generateCreature() {
+    private static ChtonicCreature generateCreature() {
         String name = NAMES.get(RANDOM.nextInt(NAMES.size()));
         String type = TYPES.get(RANDOM.nextInt(TYPES.size()));
         LocalDate firstMentionDate = LocalDate.now().minusYears(RANDOM.nextInt(2000));
         int attackPower = RANDOM.nextInt(100);
-        return new ChthonicCreature(name, type, firstMentionDate, attackPower);
+        return new ChtonicCreature(name, type, firstMentionDate, attackPower);
     }
 
-    public static Stream<ChthonicCreature> infiniteCreatureStream() {
+    public static Stream<ChtonicCreature> infiniteCreatureStream() {
         return Stream.generate(Gatherer::generateCreature);
     }
 
-    public static Map<String, Long> analyzeCreatures(List<ChthonicCreature> creatures) {
+    public static Map<String, Long> analyzeCreatures(List<ChtonicCreature> creatures) {
         List<Integer> attackPowers = creatures.stream()
-                .map(ChthonicCreature::getAttackPower)
+                .map(ChtonicCreature::getAttackPower)
                 .sorted()
                 .collect(Collectors.toList());
 
@@ -54,7 +54,7 @@ public class Gatherer {
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(
-                        e -> e.getKey() ? "outliers" : "data", // Заміна ключів
+                        e -> e.getKey() ? "outliers" : "data",
                         Map.Entry::getValue
                 ));
     }

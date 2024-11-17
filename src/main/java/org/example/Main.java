@@ -9,7 +9,7 @@ public class Main {
         int N = 100;
         int minYears = 100;
         int maxYears = 1500;
-        List<ChthonicCreature> filteredCreatures = Gatherer.infiniteCreatureStream()
+        List<ChtonicCreature> filteredCreatures = Gatherer.infiniteCreatureStream()
                 .skip(N)
                 .filter(c -> !c.getType().equals("Witch"))
                 .filter(c -> {
@@ -22,8 +22,8 @@ public class Main {
         System.out.println("Filtered Creatures:");
         filteredCreatures.forEach(System.out::println);
 
-        Map<String, List<ChthonicCreature>> groupedByType = filteredCreatures.stream()
-                .collect(Collectors.groupingBy(ChthonicCreature::getType));
+        Map<String, List<ChtonicCreature>> groupedByType = filteredCreatures.stream()
+                .collect(Collectors.groupingBy(ChtonicCreature::getType));
 
         System.out.println("\nGrouped by Type:");
         groupedByType.forEach((type, creatures) -> System.out.println(type + ": " + creatures.size()));
